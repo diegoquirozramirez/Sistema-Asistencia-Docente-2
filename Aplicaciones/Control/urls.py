@@ -1,4 +1,4 @@
-from Aplicaciones.Control.views import Admin_Dar_Alta,Admin_Dar_Baja,Admin_Cursos_Add,Admin_Horario_Add,Admin_Horario,AñadirUsuario, index, Cursos, HorarioEscuela, MarcarEntrada, MarcarSalida,Asistencia,Admin_Cursos, Admin_Asistencias, Admin_User
+from Aplicaciones.Control.views import PDFPrueba, Admin_Dar_Alta,Admin_Dar_Baja,Admin_Cursos_Add,Admin_Horario_Add,Admin_Horario,AñadirUsuario, index, Cursos, HorarioEscuela, MarcarEntrada, MarcarSalida,Asistencia,Admin_Cursos, Admin_Asistencias, Admin_User
 from django.urls import path
 from django.contrib.auth.decorators import login_required
 app_name = "Control"
@@ -18,4 +18,5 @@ urlpatterns = [
     path('Administrador/Cursos/Añadir', login_required(Admin_Cursos_Add), name="Admin_Cursos_Add"),
     path('Administrador/Usuarios/DarBaja/<idu>', login_required(Admin_Dar_Baja), name="Admin_Dar_Baja"),
     path('Administrador/Usuarios/DarAlta/<idu>', login_required(Admin_Dar_Alta), name="Admin_Dar_Alta"),
+    path('Administrador/Asistencias/ReportePDF', login_required(PDFPrueba.as_view()), name="PDFPrueba"),
 ]

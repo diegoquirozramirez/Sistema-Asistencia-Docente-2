@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from django.shortcuts import render, redirect,  get_object_or_404
 from Aplicaciones.Control.models import Curso, Horario, HoraEntrada, HoraSalida
 from Aplicaciones.Control.forms import HorarioForm,CursoForm#, HoraEntradaForm, CategoriaForm
@@ -10,9 +11,11 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.views.generic import CreateView
+from django.views.generic import View, CreateView
 from django.urls import reverse_lazy
 from django.db.models import Q
+from Aplicaciones.Control.utileria import render_pdf
+
 
 
 # Create your views here.
@@ -157,3 +160,10 @@ def Admin_Dar_Alta(request, idu):
     if usr[0].is_active == False:
         User.objects.filter(id=idu).update(is_active=True)
     return HttpResponseRedirect(reverse('Control:Admin_User'))
+
+class PDFPrueba(View):
+    def get(self, request, *args, **kwargs):
+        asistencias = HoraSalida.objects.all()
+        contexto = {'asistencias':asistencias}
+        pdf = render_pdf('administrador/reporte.html', contexto)
+        return HttpResponse(pdf, content_type="application/pdf")
