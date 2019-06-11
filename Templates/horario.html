@@ -1,0 +1,71 @@
+{% extends 'index.html' %}
+
+
+
+{%  block  content %}
+<div class="container">
+  {% if horario %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Entrada</th>
+        <th scope="col">Salida</th>
+        <th scope="col">Actividad</th>
+        <th scope="col">Firma</th>
+        <th scope="col">Observaciones</th>
+        <th scope="col">Docente</th>
+        <th scope="col">Curso</th>
+        <th scope="col" class="text-center">Marcar</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for horario in horario %}
+      <tr>
+        <th scope="row">{{ horario.id }}</th>
+        <th scope="row">{{ horario.time_entrada }}</th>
+        <th scope="row">{{ horario.time_salida }}</th>
+        <th scope="row">{{ horario.actividad }}</th>
+        <th scope="row">{{ horario.firma }}</th>
+        <th scope="row">{{ horario.observaciones }}</th>
+        <th scope="row">{{ horario.iduser }}</th>
+        <th scope="row">{{ horario.idcurso.curso }}</th>
+        <th scope="row"><a href="{% url 'Control:MarcarEntrada' horario.idcurso.id horario.id %}" class="btn btn-primary form-control">Entrada</a></th>
+
+      </tr>
+      <tr>
+
+      </tr>
+      {% endfor %}
+
+      {% if hour_marcada_entrada %}
+      <tr>
+        {% for hour_marcada_entrada in hour_marcada_entrada %}
+        <th scope="row">Hora de Entrada</th>
+        <th scope="row">{{ hour_marcada_entrada.h_entrada_str }}</th>
+        <th scope="row"><a href="{% url 'Control:MarcarSalida' hour_marcada_entrada.id %}" class="btn btn-primary form-control">Salida</a></th>
+
+      </tr>
+
+      {% endfor %}
+      {% endif %}
+
+      {% if hour_marcada_salida %}
+      <tr>
+        {% for hour_marcada_salida in hour_marcada_salida %}
+        <th scope="row">Hora de Salida</th>
+        <th scope="row">{{ hour_marcada_salida.h_salida_str }}</th>
+      </tr>
+      {% endfor %}
+      {% endif %}
+  </tbody>
+  </table>
+  {% endif %}
+
+
+</div>
+
+
+
+{% endblock %}

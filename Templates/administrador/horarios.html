@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+{%  block  content %}
+<div class="container">
+
+    <div class="card mb-3">
+      <div class="card-header">
+        <i class="fa fa-table"></i> Horarios Total
+        <a href="{% url 'Control:Admin_Horario_Add' %}" style="float:right; font-size:1.5em"><i class="fa fa-plus-circle"></i></a>
+    </div>
+      <div class="card-body">
+        <div class="table-responsive">
+            {% if horarios %}
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Hora Entrada</th>
+                <th>Hora Salida</th>
+                <th>Actividad</th>
+                <th>Firma</th>
+                <th>Observaciones</th>
+                <th>Docente</th>
+                <th>Curso</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for horarios in horarios %}
+              <tr>
+                <td>{{ horarios.id }}</td>
+                <td>{{ horarios.time_entrada }}</td>
+                <td>{{ horarios.time_salida }}</td>
+                <td>{{ horarios.actividad }}</td>
+                <td>{{ horarios.firma }}</td>
+                <td>{{ horarios.observaciones }}</td>
+                <td>{{ horarios.iduser }}</td>
+                <td>{{ horarios.idcurso.curso }}</td>
+
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+            {% endif %}
+        </div>
+      </div>
+      <div class="card-footer small text-muted">UNIVERSIDAD NACIONAL FEDERICO VILLARREAL</div>
+    </div>
+
+</div>
+
+
+{%  endblock  %}

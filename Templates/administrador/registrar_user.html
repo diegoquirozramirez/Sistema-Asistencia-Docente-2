@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+
+{% block content  %}
+
+
+  <!--form class=""  method="post">
+    {% csrf_token %}
+    <p><label for="id_username">Nombre de usuario:</label> <input type="text" name="username" id="id_username" autofocus="" maxlength="150" required=""> <span class="helptext">Requerido. 150 carácteres como máximo. Únicamente letras, dígitos y @/./+/-/_ </span></p>
+    <p><label for="id_password1">Contraseña:</label> <input type="password" name="password1" id="id_password1" required=""> <span class="helptext"></span></p><ul><li>Su contraseña no puede asemejarse tanto a su otra información personal.</li><li>Su contraseña debe contener al menos 8 caracteres.</li><li>Su contraseña no puede ser una clave utilizada comunmente.</li><li>Su contraseña no puede ser completamente numérica.</li></ul><p></p>
+    <p><label for="id_password2">Contraseña (confirmación):</label> <input type="password" name="password2" id="id_password2" required=""> <span class="helptext">Para verificar, introduzca la misma contraseña anterior.</span></p>
+      <input type="submit" name="" value="Registrar" style="BACKGROUND:#2684B3; color:white" class="submit-btn form-control text-center">
+  </form-->
+
+    <div class="section-title">
+
+    </div>
+            <div class="container">
+                 <div class="row">
+
+                      <div class="col-md-6 col-sm-12">
+                           <form id="contact-form" role="form" action="" method="post">
+                               {% csrf_token %}
+                                <div class="section-title">
+                                     <h2>Registrar a un nuevo usuario </h2><br>
+                                </div>
+
+                                <div class="col-md-12 col-sm-12">
+
+                                     <input type="text" name="username" id="id_username" autofocus="" placeholder="Correo" class="form-control" required="">
+                                     <div class="help">Requerido. 150 carácteres como máximo. Únicamente letras, dígitos y @/./+/-/_ </div><br>
+                                     <input type="password" name="password1" id="id_password1" class="form-control" required="" placeholder="Contraseña">
+                                     <div class="help"><ul><li>Su contraseña no puede asemejarse tanto a su otra información personal.</li><li>Su contraseña debe contener al menos 8 caracteres.</li><li>Su contraseña no puede ser una clave utilizada comunmente.</li><li>Su contraseña no puede ser completamente numérica.</li></ul></div>
+                                     <input type="password" name="password2" id="id_password2" required="" class="form-control" placeholder="Confirma Contraseña" >
+                                     <div class="help">Para verificar, introduzca la misma contraseña anterior.</div><br>
+
+
+                                </div>
+
+                                <div class="col-md-12 col-sm-12">
+                                     <input type="submit" class="form-control" name="send message" value="Registrar">
+                                </div>
+
+                           </form>
+                      </div>
+
+
+
+                 </div>
+            </div>
+
+
+
+
+
+
+
+
+{% endblock %}

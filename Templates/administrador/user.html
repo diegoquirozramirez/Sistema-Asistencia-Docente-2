@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{%  block  content %}
+<div class="container">
+
+    <div class="card mb-3">
+      <div class="card-header">
+        <i class="fa fa-table"></i> Usuarios Total
+        <a href="{% url 'Control:AñadirUsuario' %}" style="float:right; font-size:1.5em"><i class="fa fa-plus-circle"></i></a>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+            {% if user %}
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Estado Activo</th>
+                <th >Dar de Alta</th>
+                <th >Dar de Baja</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for user in user %}
+              <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.is_active }}</td>
+                <td><a href="{% url 'Control:Admin_Dar_Alta' user.id %}" class="btn btn-primary form-control">Hacer</a></td>
+                <td><a href="{% url 'Control:Admin_Dar_Baja' user.id %}" class="btn btn-danger form-control">Hacer</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+            {% endif %}
+        </div>
+      </div>
+      <div class="card-footer small text-muted">UNIVERSIDAD NACIONAL FEDERICO VILLARREAL</div>
+    </div>
+
+</div>
+
+
+{%  endblock  %}

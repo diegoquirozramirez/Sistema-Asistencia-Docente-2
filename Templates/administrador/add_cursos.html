@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{%  block  content %}
+<div class="container">
+
+  <div class="card mb-3">
+    <div class="card-header">
+      <i class="fa fa-table"></i> Agregando Nuevo Curso</div>
+    <div class="card-body">
+      <div class="table-responsive">
+
+    <form class=""  method="post">
+    {% csrf_token %}
+    {{ form.as_p}}
+    
+    <input type="submit" name="" value="Añadir Curso"  class="btn btn-primary form-control text-center">
+
+  </form>
+
+    </div>
+    </div>
+    <div class="card-footer small text-muted">UNIVERSIDAD NACIONAL FEDERICO VILLARREAL</div>
+  </div>
+
+
+
+</div>
+
+
+{%  endblock  %}

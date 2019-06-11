@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+{%  block  content %}
+<div class="container">
+
+  <div class="card mb-3">
+    <div class="card-header">
+      <i class="fa fa-table"></i> Total de Asistencias Cumplidas</div>
+    <div class="card-body">
+      <div class="table-responsive">
+          {% if asistencias %}
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Hora Entrada</th>
+              <th>Hora Salida</th>
+              <th>Fecha</th>
+              <th>Curso</th>
+              <th>Docente</th>
+
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for asistencias in asistencias %}
+            <tr>
+              <td>{{ asistencias.id }}</td>
+              <td>{{ asistencias.id_hora_entrada.h_entrada_str }}</td>
+              <td>{{ asistencias.h_salida_str }}</td>
+              <td>{{ asistencias.id_hora_entrada.f_entrada }}</td>
+              <td>{{ asistencias.id_hora_entrada.idhorario.idcurso.curso }}</td>
+              <td>{{ asistencias.id_hora_entrada.idhorario.iduser }}</td>
+
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+          {% endif %}
+      </div>
+    </div>
+    <div class="card-footer small text-muted">UNIVERSIDAD NACIONAL FEDERICO VILLARREAL</div>
+  </div>
+
+
+
+</div>
+
+
+{%  endblock  %}
